@@ -2,7 +2,7 @@ trigger:
 - master 
 
 pool:
-  vmImage: Default 
+  name: Default 
 
 variables:
   imageRepository: 'bigboss-pizza-app'
