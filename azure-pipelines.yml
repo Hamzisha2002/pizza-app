@@ -1,0 +1,29 @@
+trigger:
+- master 
+
+pool:
+  name: Default 
+
+variables:
+  imageRepository: 'bigboss-pizza-app'
+ 
+  dockerRegistryServiceConnection: 'MyDockerHubConnection' 
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: BuildAndPush
+  displayName: Build and Push Docker Image
+  jobs:
+  - job: Build
+    displayName: Docker Build Job
+    steps:
+    - task: Docker@2
+      displayName: Build and push image to Registry
+      inputs:
+        command: buildAndPush
+        containerRegistry: $(dockerRegistryServiceConnection)
+        repository: $(imageRepository)
+        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        tags: |
+          $(tag)
+          latest
