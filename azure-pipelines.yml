@@ -6,7 +6,7 @@ pool:
   # Forced update
 
 variables:
-  imageRepository: 'bigboss-pizza-app'
+  imageRepository: 'hamzidoc/bigboss-pizza-app'
  
   dockerRegistryServiceConnection: 'MyDockerHubConnection' 
   tag: '$(Build.BuildId)'
